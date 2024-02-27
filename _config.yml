@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: InverseLerp's Grimoire
-subtitle: "Witchcraft Library"
+subtitle: "The Unofficial Unreal Engine Witchcraft Library"
 email:
 description: >- # this means to ignore newlines until "baseurl:"
   "Unreal Engine, Tech Art, VFX, C++ Tutorials"
@@ -62,21 +62,21 @@ author:
   bio    : "Technical Artist"
   location : "Vancouver, BC"
   links:
+    - label: "Artstation"
+      icon: "fab fa-fw fa-artstation"
+      url: "https://www.artstation.com/inverselerp"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/inverselerp_"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/inverselerp"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
 
 footer:
   links:
     - label: "Artstation"
       icon: "fab fa-fw fa-artstation"
-      url: "https://instagram.com/"
+      url: "https://www.artstation.com/inverselerp"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/inverselerp_/"
