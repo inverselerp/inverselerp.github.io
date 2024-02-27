@@ -18,9 +18,9 @@ subtitle: "Witchcraft Library"
 email:
 description: >- # this means to ignore newlines until "baseurl:"
   "Unreal Engine, Tech Art, VFX, C++ Tutorials"
-twitter_username: inverselerp
-github_username: inverselerp
-minimal_mistakes_skin: default
+twitter_username: "inverselerp"
+github_username: "inverselerp"
+minimal_mistakes_skin: "default"
 search: true
 
 # Build settings
@@ -60,28 +60,30 @@ author:
   name   : "Philippe Patient"
   avatar : "/assets/images/philippe.jpg"
   bio    : "Technical Artist"
+  location : "Vancouver, BC"
   links:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/inverselerp_"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/inverselerp"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://instagram.com/"
 
 footer:
   links:
+    - label: "Artstation"
+      icon: "fab fa-fw fa-artstation"
+      url: "https://instagram.com/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+      url: "https://twitter.com/inverselerp_/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/inverselerp"
+
 
 defaults:
   # _posts
