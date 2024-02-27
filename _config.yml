@@ -58,12 +58,9 @@ plugins:
 
 author:
   name   : "Philippe Patient"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/philippe.jpg"
   bio    : "Technical Artist"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/"
