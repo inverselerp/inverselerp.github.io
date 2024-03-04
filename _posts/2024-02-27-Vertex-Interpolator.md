@@ -19,7 +19,7 @@ The vertex interpolator got introduced in [Unreal 4.16] as a more convenient way
 ## What does it do
 
 - Lower the instruction count by offsetting the processing to the vertex
-- 
+- ![[Pasted image 20240304145109.png]]
 
 
 
