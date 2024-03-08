@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
+                "file": "_posts/2010-02-05-post-notice.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
+                "file": "_posts/2010-02-05-post-notice.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
+                "file": "_posts/2010-02-05-post-notice.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md"
+                "file": "_posts/2010-02-05-post-notice.md"
               }
             }
           }
@@ -161,6 +161,10 @@
   },
   "active": "086603f7ad3155a2",
   "lastOpenFiles": [
+    "_posts/2024-02-27-Vertex-Interpolator.md",
+    "_posts/2010-02-05-post-notice.md",
+    "_posts/Untitled 1.md",
+    "assets/images/bio-photo.jpg",
     "Untitled.md",
     "assets/images/test.png",
     "_layouts/home.html",
@@ -168,14 +172,11 @@
     "_layouts",
     "New folder",
     "_pages/portfolio-archive.md",
-    "_posts/2024-02-27-Vertex-Interpolator.md",
     "_posts/2019-04-18-welcome-to-jekyll.md",
     "Pasted image 20240304145109.png",
     "_posts/2010-01-07-post-modified.md",
     "_posts/2010-03-07-post-link.md",
-    "_posts/2010-02-05-post-notice.md",
     "_posts/2010-01-07-post-standard.md",
-    "assets/images/bio-photo.jpg",
     "assets/images/philippe.jpg",
     "_pages/year-archive.md",
     "_pages/tag-archive.md",

@@ -1,16 +1,15 @@
 ---
-title: "Using the Vertex Interpolator For Character Effects"
+title: Using the Vertex Interpolator For Character Effects
 header:
   image: /assets/images/test.png
 categories:
   - Tutorials
 tags:
   - Optimization
-  - Technical Art
+  - Technical
+  - Art
 ---
 One of the most common question you'll have while being on your Tech Art journey is this:
-
-
 
 
 >[!Question]
