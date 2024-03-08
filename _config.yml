@@ -95,10 +95,11 @@ defaults:
       toc: true
       toc_label: "Table Of Contents"
       author_profile: false
-      read_time: true
+      read_time: false
       comments: false
       share: false
       related: true
+      teaser: /assets/images/teaser.png
   # _pages
   - scope:
       path: "_pages"
