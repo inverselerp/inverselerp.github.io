@@ -1,6 +1,7 @@
 ---
 title: "Using the Vertex Interpolator For Character Effects"
-date: 2019-04-18T15:34:30-04:00
+header:
+  image: /assets/images/test.png
 categories:
   - Tutorials
 tags:

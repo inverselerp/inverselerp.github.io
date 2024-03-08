@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
                 "mode": "source",
                 "source": false
               }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Untitled.md",
+                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Untitled.md",
+                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md"
+                "file": "_posts/2024-02-27-Vertex-Interpolator.md"
               }
             }
           }
@@ -159,15 +159,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a06bb2e5ba8a18b0",
+  "active": "086603f7ad3155a2",
   "lastOpenFiles": [
+    "Untitled.md",
+    "assets/images/test.png",
     "_layouts/home.html",
     "_layouts/New Text Document.txt",
     "_layouts",
     "New folder",
     "_pages/portfolio-archive.md",
     "_posts/2024-02-27-Vertex-Interpolator.md",
-    "Untitled.md",
     "_posts/2019-04-18-welcome-to-jekyll.md",
     "Pasted image 20240304145109.png",
     "_posts/2010-01-07-post-modified.md",
