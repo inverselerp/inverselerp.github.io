@@ -3,7 +3,7 @@ title: Using the Vertex Interpolator For Character Effects
 header:
   image: /assets/images/test.png
 categories:
-  - Tutorials
+  - Technical Art
 tags:
   - Optimization
   - Technical
