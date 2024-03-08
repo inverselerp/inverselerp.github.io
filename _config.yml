@@ -92,6 +92,7 @@ defaults:
       type: posts
     values:
       layout: single
+      feature: /assets/images/teaser.png
       toc: true
       toc_label: "Table Of Contents"
       author_profile: false
