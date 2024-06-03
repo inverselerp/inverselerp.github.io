@@ -22,7 +22,7 @@ gallery:
 ---
 
 Virtual Death is my first fully-featured game after my transition to the Unreal Engine.
-It features [Data Assets], an inventory and inspection system, as well as puzzle solving.
+It features [data assets], an inventory and inspection system, as well as puzzle solving.
 
 There was a lot of new challenges to overcome as my first game of this size.
 
@@ -31,5 +31,5 @@ There was a lot of new challenges to overcome as my first game of this size.
 you can play it [here]
 
 
-[Data Assets]: https://dev.epicgames.com/documentation/en-us/unreal-engine/data-assets-in-unreal-engine
-[Here]: https://visualmemoryunit.itch.io/virtual-death
+[data assets]: https://dev.epicgames.com/documentation/en-us/unreal-engine/data-assets-in-unreal-engine
+[here]: https://visualmemoryunit.itch.io/virtual-death
