@@ -17,9 +17,18 @@ gallery:
     image_path: assets/images/unsplash-gallery-image-3-th.jpg
     alt: "placeholder image 3"
 
-
+sidebar:
+  - title: "Virtual Death"
+    image: http://placehold.it/350x250
+    image_alt: "image"
+    text: "Some text here."
+    nav: sidebar-sample
+  - title: Another sidebar nav
+    nav: sidebar-sample
 
 ---
+
+#Premise 
 
 Virtual Death is my first fully-featured game after my transition to the Unreal Engine.
 It features [data assets], an inventory and inspection system, as well as puzzle solving.
