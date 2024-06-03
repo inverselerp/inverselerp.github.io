@@ -4,7 +4,6 @@ excerpt: "Myst-Inspired Point-n-Click adventure"
 tags:
   - gamedev
 header:
-  image: /assets/images/virtualdeathbanner.png
   teaser: /assets/images/virtualdeathbanner.png
 gallery:
   - url: /assets/images/unsplash-gallery-image-1.jpg
