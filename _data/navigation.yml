@@ -1,13 +1,9 @@
 main:
   - title: "Home"
     url: /home/
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "Learn"
+    url: /Learn/
   - title: "Games"
     url: /games/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
   - title: "About"
     url: /about/
