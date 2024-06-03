@@ -1,9 +1,9 @@
 ---
-title: "Fo"
+title: "Foo Bar Identity"
 excerpt: "Foo Bar design system including logo mark, website design, and branding applications."
 header:
   image: /assets/images/test.png
-  teaser: /assets/images/test.png
+  teaser: /assets/images/foo-bar-identity-th.jpg
 sidebar:
   - title: "Role"
     image: http://placehold.it/350x250
