@@ -23,11 +23,9 @@
             "id": "086603f7ad3155a2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
-                "mode": "source",
-                "source": false
+                "file": "Pasted image 20240304145109.png"
               }
             }
           }
@@ -98,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
+                "file": "Pasted image 20240304145109.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md",
+                "file": "Pasted image 20240304145109.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-02-27-Vertex-Interpolator.md"
+                "file": "Pasted image 20240304145109.png"
               }
             }
           }
@@ -159,16 +157,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "086603f7ad3155a2",
+  "active": "a06bb2e5ba8a18b0",
   "lastOpenFiles": [
+    "_pages/portfolio.md",
+    "Untitled.md",
+    "README.md",
+    "_posts/2010-02-05-post-notice.md",
+    "_posts/2024-02-27-Vertex-Interpolator.md",
     "assets/images/teaser.png",
     "assets/images/teaser.png.crdownload",
     "Untitled 1.md",
-    "_posts/2010-02-05-post-notice.md",
-    "_posts/2024-02-27-Vertex-Interpolator.md",
     "_posts/Untitled 1.md",
     "assets/images/bio-photo.jpg",
-    "Untitled.md",
     "assets/images/test.png",
     "_layouts/home.html",
     "_layouts/New Text Document.txt",
