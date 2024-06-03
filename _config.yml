@@ -123,24 +123,15 @@ defaults:
       toc_sticky: true
       sidebar:
         nav: "docs"
-  # _recipes
+  # _games
   - scope:
-      path: ""
-      type: recipes
+      path: "_games"
+      type: portfolio
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
-      comments: true
-  # _pets
-  - scope:
-      path: ""
-      type: pets
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
+
   # _portfolio
   - scope:
       path: "_portfolio"
