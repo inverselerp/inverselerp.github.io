@@ -20,7 +20,7 @@ sidebar:
   - title: "Virtual Death"
     image: http://placehold.it/350x250
     image_alt: "image"
-    text: "Some text here."
+    text: {% include gallery layout="single" caption="This is a half gallery layout example." %}
     nav: sidebar-sample
   - title: Another sidebar nav
     nav: sidebar-sample
@@ -29,12 +29,11 @@ sidebar:
 
 #Premise 
 
-Virtual Death is my first fully-featured game after my transition to the Unreal Engine.
-It features [data assets], an inventory and inspection system, as well as puzzle solving.
+
 
 There was a lot of new challenges to overcome as my first game of this size.
 
-{% include gallery layout="single" caption="This is a half gallery layout example." %}
+
 
 you can play it [here]
 
