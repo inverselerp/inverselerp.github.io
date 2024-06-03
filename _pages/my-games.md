@@ -1,5 +1,5 @@
 ---
-title: My Games
+title: Games
 layout: collection
 permalink: /games/
 collection: games

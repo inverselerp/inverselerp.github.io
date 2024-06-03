@@ -26,6 +26,10 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  games:
+    output: true
+    permalink: /:collection/:path/
+
 
 
 # Build settings
@@ -126,7 +130,7 @@ defaults:
   # _games
   - scope:
       path: "_games"
-      type: portfolio
+      type: games
     values:
       layout: single
       author_profile: false
