@@ -6,14 +6,14 @@ tags:
 header:
   teaser: /assets/images/virtualdeathbanner.png
 gallery:
-  - url: /assets/images/unsplash-gallery-image-1.jpg
-    image_path: assets/images/unsplash-gallery-image-1-th.jpg
+  - url: /assets/images/virtualdeathbanner.png
+    image_path: assets/images/virtualdeathbanner.png
     alt: "placeholder image 1"
-  - url: /assets/images/unsplash-gallery-image-2.jpg
-    image_path: assets/images/unsplash-gallery-image-2-th.jpg
+  - url: /assets/images/virtualdeathbanner.png
+    image_path: assets/virtualdeathbanner.png
     alt: "placeholder image 2"
-  - url: /assets/images/unsplash-gallery-image-3.jpg
-    image_path: assets/images/unsplash-gallery-image-3-th.jpg
+  - url: /assets/images/virtualdeathbanner.png
+    image_path: assets/images/virtualdeathbanner.png
     alt: "placeholder image 3"
 
 sidebar:
@@ -34,7 +34,7 @@ It features [data assets], an inventory and inspection system, as well as puzzle
 
 There was a lot of new challenges to overcome as my first game of this size.
 
-{% include gallery caption="This is a sample gallery to go along with this case study." %}
+{% raw %}{% include gallery id="gallery" layout="single" caption="This is a half gallery layout example." %}{% endraw %}
 
 you can play it [here]
 
