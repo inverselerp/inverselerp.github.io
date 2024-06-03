@@ -34,7 +34,7 @@ It features [data assets], an inventory and inspection system, as well as puzzle
 
 There was a lot of new challenges to overcome as my first game of this size.
 
-{% raw %}{% include gallery layout="half" caption="This is a half gallery layout example." %}{% endraw %}
+{% include gallery layout="single" caption="This is a half gallery layout example." %}
 
 you can play it [here]
 
