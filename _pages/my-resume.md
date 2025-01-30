@@ -1,8 +1,8 @@
 ---
-title: Games
-layout: collection
-permalink: /games/
-collection: games
+title: Resume
+layout: single
+permalink: /resume
+collection: resume
 entries_layout: grid
 classes: wide
 ---
