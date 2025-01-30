@@ -1,6 +1,8 @@
 main:
   - title: "Home"
     url: /home/
+  - title: "Resume"
+    url: /resume/
   - title: "Learn"
     url: /Learn/
   - title: "Games"

@@ -16,17 +16,23 @@
                 "file": "_posts/2024-02-27-Vertex-Interpolator.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "2024-02-27-Vertex-Interpolator"
             }
           },
           {
             "id": "086603f7ad3155a2",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20240304145109.png"
-              }
+                "file": "_pages/my-resume.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "my-resume"
             }
           }
         ],
@@ -50,7 +56,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -65,7 +73,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -73,7 +83,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -96,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Pasted image 20240304145109.png",
+                "file": "_pages/my-resume.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +116,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for my-resume"
             }
           },
           {
@@ -113,10 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Pasted image 20240304145109.png",
+                "file": "_pages/my-resume.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from my-resume"
             }
           },
           {
@@ -127,7 +143,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -136,8 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Pasted image 20240304145109.png"
-              }
+                "file": "_pages/my-resume.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of my-resume"
             }
           }
         ]
@@ -157,17 +177,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a06bb2e5ba8a18b0",
+  "active": "086603f7ad3155a2",
   "lastOpenFiles": [
+    "_resume",
+    "New folder",
+    "_pages/my-games.md",
+    "_pages/my-resume.md",
+    "_pages/portfolio-archive.md",
+    "_pages/tag-archive.md",
+    "_pages/about.md",
+    "_pages/category-archive.md",
     "assets/images/virtualdeathbanner.png",
+    "assets/images/test.png",
+    "assets/images/teaser.png",
+    "assets/images/philippe.jpg",
+    "assets/images/bio-photo.jpg",
+    "_pages/year-archive.md",
+    "_games/virtualdeath.md",
+    "_posts/2024-02-27-Vertex-Interpolator.md",
     "assets/images/virtualdeathicon.png",
     "assets/images/virtualdeathicon.gif",
-    "_games/virtualdeath.md",
     "_portfolio - Copy/fortnite.md",
     "_portfolio - Copy/foo-bar-website.md",
     "_portfolio - Copy/foo-bar-website - Copy - Copy.md",
     "_portfolio - Copy",
-    "_pages/my-games.md",
     "_pages/category-archive - Copy.md",
     "_games/foo-bar-website.md",
     "_games/fortnite.md",
@@ -178,27 +211,15 @@
     "_portfolio/foo-bar-website - Copy.md",
     "_portfolio/foo-bar-website.md",
     "_portfolio",
-    "New folder",
     "_pages/portfolio.md",
     "Untitled.md",
     "README.md",
     "_posts/2010-02-05-post-notice.md",
-    "_posts/2024-02-27-Vertex-Interpolator.md",
-    "assets/images/teaser.png",
     "assets/images/teaser.png.crdownload",
     "Untitled 1.md",
-    "_posts/Untitled 1.md",
-    "assets/images/bio-photo.jpg",
-    "assets/images/test.png",
     "_layouts/home.html",
     "_layouts/New Text Document.txt",
     "_layouts",
-    "_pages/portfolio-archive.md",
-    "_posts/2019-04-18-welcome-to-jekyll.md",
-    "Pasted image 20240304145109.png",
-    "_posts/2010-01-07-post-modified.md",
-    "_posts/2010-03-07-post-link.md",
-    "_posts/2010-01-07-post-standard.md",
-    "assets/images/philippe.jpg"
+    "Pasted image 20240304145109.png"
   ]
 }
