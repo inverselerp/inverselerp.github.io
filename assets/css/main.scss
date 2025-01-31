@@ -1,0 +1,15 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
+// Override default primary color (blue) with orange
+$primary-color: rgb(194, 68, 79);  // This is the orange color you want
+$link-color: rgb(194, 68, 79);
+@charset "utf-8";
+
+// Import the rest of the theme's styles after customization
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+
+

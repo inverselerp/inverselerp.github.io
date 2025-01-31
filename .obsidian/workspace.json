@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/my-resume.md",
+                "file": "_pages/resume.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "my-resume"
+              "title": "resume"
             }
           }
         ],
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/my-resume.md",
+                "file": "_pages/resume.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for my-resume"
+              "title": "Backlinks for resume"
             }
           },
           {
@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/my-resume.md",
+                "file": "_pages/resume.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from my-resume"
+              "title": "Outgoing links from resume"
             }
           },
           {
@@ -154,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/my-resume.md"
+                "file": "_pages/resume.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of my-resume"
+              "title": "Outline of resume"
             }
           }
         ]
@@ -179,48 +179,51 @@
   },
   "active": "086603f7ad3155a2",
   "lastOpenFiles": [
-    "Gemfile.lock",
-    "_resume",
-    "New folder",
-    "_pages/my-games.md",
-    "_pages/my-resume.md",
-    "_pages/portfolio-archive.md",
+    "_site/assets/css/main.scss",
+    "assets/css/main.scss",
+    "_site/assets/css/custom.scss",
+    "_site/assets/css/custom.css",
+    "assets/css/custom.scss",
+    "assets/css",
+    "assets/New folder",
+    "_site/Games/virtualdeath/index.html",
+    "_site/Games/virtualdeath",
+    "_site/assets/custom.scss",
+    "assets/custom.scss",
+    "_pages/resume.md",
     "_pages/tag-archive.md",
+    "_pages/resume.md",
     "_pages/about.md",
     "_pages/category-archive.md",
+    "_site/_pages/resume.md",
+    "_posts/2010-02-05-post-notice.md",
+    "_posts/2024-02-27-Vertex-Interpolator.md",
+    "_pages/my-games.md",
+    "_games/virtualdeath.md",
+    "_pages/my-resume.md",
+    "_site/Untitled.md",
+    "_site/README.md",
+    "_site/Pasted image 20240304145109.png",
+    "_site/assets/images/test.png",
+    "_site/assets/images/virtualdeathbanner.png",
+    "_site/assets/images/teaser.png",
+    "_site/assets/images/philippe.jpg",
+    "_site/assets/images/bio-photo.jpg",
+    "_pages/portfolio-archive.md",
     "assets/images/virtualdeathbanner.png",
     "assets/images/test.png",
     "assets/images/teaser.png",
     "assets/images/philippe.jpg",
-    "assets/images/bio-photo.jpg",
     "_pages/year-archive.md",
-    "_games/virtualdeath.md",
-    "_posts/2024-02-27-Vertex-Interpolator.md",
-    "assets/images/virtualdeathicon.png",
-    "assets/images/virtualdeathicon.gif",
     "_portfolio - Copy/fortnite.md",
     "_portfolio - Copy/foo-bar-website.md",
     "_portfolio - Copy/foo-bar-website - Copy - Copy.md",
-    "_portfolio - Copy",
     "_pages/category-archive - Copy.md",
     "_games/foo-bar-website.md",
     "_games/fortnite.md",
     "_games/foo-bar-website - Copy - Copy.md",
-    "_games",
     "_portfolio/fortnite.md",
     "_portfolio/foo-bar-website - Copy - Copy.md",
-    "_portfolio/foo-bar-website - Copy.md",
-    "_portfolio/foo-bar-website.md",
-    "_portfolio",
-    "_pages/portfolio.md",
-    "Untitled.md",
-    "README.md",
-    "_posts/2010-02-05-post-notice.md",
-    "assets/images/teaser.png.crdownload",
-    "Untitled 1.md",
-    "_layouts/home.html",
-    "_layouts/New Text Document.txt",
-    "_layouts",
-    "Pasted image 20240304145109.png"
+    "_portfolio/foo-bar-website - Copy.md"
   ]
 }
