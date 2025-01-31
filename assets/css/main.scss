@@ -7,9 +7,28 @@ $primary-color: rgb(194, 68, 79);  // This is the orange color you want
 $link-color: rgb(194, 68, 79);
 @charset "utf-8";
 
+strong, b {
+    color: $primary-color;  // Matches your primary color
+}
+
 // Import the rest of the theme's styles after customization
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+html {
+    font-size: 12px; // originally 16px
+    @include breakpoint($medium) {
+        font-size: 14px; // originally 18px
+    }
+
+    @include breakpoint($large) {
+        font-size: 16px; // originally 20px
+    }
+
+    @include breakpoint($x-large) {
+        font-size: 18px; // originally 22px
+    }
+}
 
 
 

@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/resume.md",
+                "file": "_pages/tag-archive.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "resume"
+              "title": "tag-archive"
             }
           }
         ],
@@ -179,6 +179,12 @@
   },
   "active": "086603f7ad3155a2",
   "lastOpenFiles": [
+    "_pages/year-archive.md",
+    "_pages/tag-archive.md",
+    "_pages/resume.md",
+    "_pages/category-archive.md",
+    "_pages/my-resume.md",
+    "_pages/about.md",
     "_site/assets/css/main.scss",
     "assets/css/main.scss",
     "_site/assets/css/custom.scss",
@@ -189,18 +195,11 @@
     "_site/Games/virtualdeath/index.html",
     "_site/Games/virtualdeath",
     "_site/assets/custom.scss",
-    "assets/custom.scss",
-    "_pages/resume.md",
-    "_pages/tag-archive.md",
-    "_pages/resume.md",
-    "_pages/about.md",
-    "_pages/category-archive.md",
     "_site/_pages/resume.md",
     "_posts/2010-02-05-post-notice.md",
     "_posts/2024-02-27-Vertex-Interpolator.md",
     "_pages/my-games.md",
     "_games/virtualdeath.md",
-    "_pages/my-resume.md",
     "_site/Untitled.md",
     "_site/README.md",
     "_site/Pasted image 20240304145109.png",
@@ -214,7 +213,6 @@
     "assets/images/test.png",
     "assets/images/teaser.png",
     "assets/images/philippe.jpg",
-    "_pages/year-archive.md",
     "_portfolio - Copy/fortnite.md",
     "_portfolio - Copy/foo-bar-website.md",
     "_portfolio - Copy/foo-bar-website - Copy - Copy.md",
