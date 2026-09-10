@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <title>Neutral parent defaults versus non-neutral defaults</title>
+  <defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#607a57" stroke-opacity=".12"/></pattern></defs>
+  <path fill="#15251e" d="M0 0h960v620H0z"/><path fill="url(#grid)" d="M0 0h960v620H0z"/>
+  <g font-family="Consolas,monospace" fill="#abc2a0" font-size="14" letter-spacing="1.4">
+    <text x="48" y="48">MATERIAL STUDY / 02</text><text x="677" y="48">BLEND THE PARAMETERS</text>
+    <text x="340" y="122">WEIGHT 0</text><text x="537" y="122">WEIGHT 0.5</text><text x="749" y="122">WEIGHT 1</text>
+  </g>
+  <g font-family="Consolas,monospace">
+    <text x="54" y="225" fill="#d5ee9c" font-size="19">NEUTRAL DEFAULT</text>
+    <text x="54" y="254" fill="#abc2a0" font-size="13">Parent 0 → Instance 1</text>
+    <text x="54" y="408" fill="#d9b99c" font-size="19">SAME AT BOTH ENDS</text>
+    <text x="54" y="437" fill="#abc2a0" font-size="13">Parent 1 → Instance 1</text>
+  </g>
+  <path d="M335 240H850M335 423H850" stroke="#516f4b" stroke-width="2"/>
+  <g stroke="#789764" stroke-width="1.5">
+    <rect x="326" y="162" width="140" height="114" fill="#1c2921"/>
+    <rect x="523" y="162" width="140" height="114" fill="#758957"/>
+    <rect x="720" y="162" width="140" height="114" fill="#d5ee9c"/>
+    <rect x="326" y="345" width="140" height="114" fill="#d5ee9c"/>
+    <rect x="523" y="345" width="140" height="114" fill="#d5ee9c"/>
+    <rect x="720" y="345" width="140" height="114" fill="#d5ee9c"/>
+  </g>
+  <g font-family="Consolas,monospace" font-size="29" text-anchor="middle">
+    <text x="396" y="230" fill="#d5ee9c">0.00</text><text x="593" y="230" fill="#131d13">0.50</text><text x="790" y="230" fill="#131d13">1.00</text>
+    <text x="396" y="413" fill="#131d13">1.00</text><text x="593" y="413" fill="#131d13">1.00</text><text x="790" y="413" fill="#131d13">1.00</text>
+  </g>
+  <path d="M48 514H912" stroke="#476247"/>
+  <text x="54" y="554" fill="#d5ee9c" font-family="Consolas,monospace" font-size="21">value = lerp(ParentDefault, InstanceValue, Weight)</text>
+  <text x="54" y="583" fill="#abc2a0" font-family="Consolas,monospace" font-size="12">PARAMETER VALUES ONLY / NOT A RENDERED IMAGE OR A PERFORMANCE MEASUREMENT</text>
+</svg>

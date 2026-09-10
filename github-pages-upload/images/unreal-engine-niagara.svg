@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <title>Unreal Engine — Niagara modules and tooling</title>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" fill="none" stroke="#93b8a3" stroke-opacity=".09"/></pattern>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#203b39"/><stop offset="1" stop-color="#111c24"/></linearGradient>
+  </defs>
+  <path fill="url(#bg)" d="M0 0h960v540H0z"/><path fill="url(#grid)" d="M0 0h960v540H0z"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#eff4e9">
+    <text x="56" y="98" font-size="49" letter-spacing="-1.5">Unreal Engine</text>
+    <text x="58" y="133" font-size="19" fill="#acc4b9">Niagara modules &amp; tooling</text>
+  </g>
+  <g fill="#203731" stroke="#718f76">
+    <rect x="60" y="207" width="335" height="65" rx="10"/>
+    <rect x="60" y="283" width="335" height="65" rx="10"/>
+    <rect x="60" y="359" width="335" height="65" rx="10"/>
+    <rect x="566" y="257" width="335" height="117" rx="12" fill="#334d32" stroke="#afcb89"/>
+  </g>
+  <g fill="#d5ee9c"><circle cx="83" cy="239" r="5"/><circle cx="83" cy="315" r="5"/><circle cx="83" cy="391" r="5"/></g>
+  <g font-family="Consolas,monospace" font-size="19" fill="#d7e5d4">
+    <text x="105" y="246">INPUTS</text><text x="105" y="322">NIAGARA MODULES</text><text x="105" y="398">OUTPUTS</text>
+    <text x="600" y="305" fill="#d5ee9c">LIGHTWEIGHT</text><text x="600" y="335" fill="#d5ee9c">CONVERSION</text>
+  </g>
+  <path d="M411 315H547m-11-8 11 8-11 8" fill="none" stroke="#d5ee9c" stroke-width="2"/>
+  <text x="58" y="493" font-family="Consolas,monospace" font-size="12" letter-spacing="1.4" fill="#8eaa9f">MODULE DEVELOPMENT / EDITOR FEATURES / PORTFOLIO ILLUSTRATION</text>
+</svg>
