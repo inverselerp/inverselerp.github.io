@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="en" data-theme="system" data-theme-preference="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A smooth fade starts with a neutral parent material—not a specially named strength parameter."><meta name="theme-color" content="#dedddb"><meta name="color-scheme" content="light dark"><script data-theme-script>// Inlined once in <head>; only a local appearance preference is stored.
+(() => {
+  const key = 'inverselerp-theme';
+  const root = document.documentElement;
+  const system = window.matchMedia('(prefers-color-scheme: dark)');
+  let button;
+  // Missing, invalid, or legacy "system" values mean no manual override.
+  const normalize = (value) => value === 'light' || value === 'dark' ? value : 'system';
+  const read = () => {
+    try { return normalize(window.localStorage.getItem(key)); }
+    catch { return 'system'; }
+  };
+  let mode = read();
+  const resolve = () => mode === 'system' ? (system.matches ? 'dark' : 'light') : mode;
+
+  function apply() {
+    const resolved = resolve();
+    root.dataset.theme = resolved;
+    root.dataset.themePreference = mode;
+    root.style.colorScheme = resolved;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',
+      resolved === 'dark' ? '#25282d' : '#dedddb');
+    if (button) {
+      const current = resolved[0].toUpperCase() + resolved.slice(1);
+      const next = resolved === 'dark' ? 'light' : 'dark';
+      const label = `Theme: ${current}. Switch to ${next} theme.`;
+      button.setAttribute('aria-label', label);
+      button.title = label;
+    }
+  }
+
+  // Resolve the OS default or saved override before CSS/body rendering.
+  apply();
+  function bind() {
+    button = document.getElementById('theme-toggle');
+    if (!button) return;
+    button.addEventListener('click', () => {
+      mode = resolve() === 'dark' ? 'light' : 'dark';
+      try { window.localStorage.setItem(key, mode); } catch { /* Storage can be blocked. */ }
+      apply();
+    });
+    apply();
+    button.hidden = false;
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, { once: true });
+  else bind();
+
+  const followSystem = () => { if (mode === 'system') apply(); };
+  if (system.addEventListener) system.addEventListener('change', followSystem);
+  window.addEventListener('storage', (event) => {
+    if (event.key === key || event.key === null) {
+      mode = normalize(event.newValue);
+      apply();
+    }
+  });
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      mode = read();
+      apply();
+    }
+  });
+})();
+</script><meta name="robots" content="index,follow"><meta property="og:title" content="Why post-process Blend Weight can surprise you — Philippe Patient"><meta property="og:description" content="A smooth fade starts with a neutral parent material—not a specially named strength parameter."><meta property="og:type" content="website"><link rel="canonical" href="https://inverselerp.github.io/notes/post-process-blend-weight/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate" type="application/rss+xml" title="Philippe Patient — Field notes" href="/rss.xml"><title>Why post-process Blend Weight can surprise you — Philippe Patient</title><link rel="stylesheet" href="/assets/Base.DV7-DT_C.css"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="site-shell"><header class="site-header"><a class="identity" href="/" aria-label="Philippe Patient, home"><span class="monogram" aria-hidden="true">p<span>p</span><i>.</i></span><span class="identity-name">Philippe Patient<span>FIELD NOTES & SELECTED WORK</span></span></a><div class="header-actions"><nav aria-label="Main navigation"><a href="/">Home<span class="nav-dot" aria-hidden="true"></span></a><a href="/works/" aria-current="page">Works<span class="nav-dot" aria-hidden="true"></span></a><a href="/games/">Games<span class="nav-dot" aria-hidden="true"></span></a><a href="/contact/">Contact<span class="nav-dot" aria-hidden="true"></span></a></nav><button id="theme-toggle" class="theme-toggle" type="button" hidden aria-label="Toggle light or dark theme" title="Toggle light or dark theme"><svg class="theme-icon theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg><svg class="theme-icon theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14a8.7 8.7 0 0 1-10.5-10.5A9 9 0 1 0 20.5 14Z"></path></svg></button></div></header><main id="main"><div class="article-topline"><a class="back-link mono" href="/works/unreal-engine/">← UNREAL ENGINE</a><span class="mono">ARTICLE / 6 MIN READ</span></div><header class="article-header"><div class="post-meta mono"><time datetime="2026-09-09T00:00:00.000Z">Sep 09, 2026</time></div><h1>Why post-process Blend Weight can surprise you</h1><p class="article-description">A smooth fade starts with a neutral parent material—not a specially named strength parameter.</p><div class="post-tags"><span>Unreal Engine</span><span>Post Process</span><span>Materials</span></div></header><figure class="article-cover surface-bevel"><img src="/images/post-process-defaults.svg" alt="Two rows compare blending from a neutral parent value of zero to an instance value of one, versus blending from a parent value of one to the same instance value." width="960" height="620" fetchpriority="high"><figcaption class="mono">CONCEPT DIAGRAM / NEUTRAL DEFAULTS MAKE THE FADE POSSIBLE</figcaption></figure><div class="article-layout"><aside class="article-sidebar"><nav aria-label="On this page"><p class="eyebrow">IN THIS NOTE</p><ol><li><a href="#give-zero-influence-somewhere-neutral-to-go">Give zero influence somewhere neutral to go</a></li><li><a href="#make-a-minimal-test-material">Make a minimal test material</a></li><li><a href="#set-up-the-instance-and-volume">Set up the instance and volume</a></li><li><a href="#neutral-depends-on-the-operation">Neutral depends on the operation</a></li><li><a href="#more-than-one-parameter-is-blending">More than one parameter is blending</a></li><li><a href="#know-which-weight-and-priority-you-are-changing">Know which weight and priority you are changing</a></li><li><a href="#before-you-add-another-workaround">Before you add another workaround</a></li><li><a href="#reference">Reference</a></li></ol></nav><div class="sidebar-note"><span class="sidebar-glyph" aria-hidden="true">↳</span><p>Read it.<br>Try it.<br>Make it your own.</p></div></aside><div class="article-main"><aside class="editorial-note"><span class="mono">ENGINE CHECK PENDING</span><p>Prepared from working notes with new conceptual diagrams. The described setup has not yet been reproduced or profiled in Unreal Engine.</p></aside><article class="prose"><p>You have a post-process material that looks right at full strength. You lower its Blend Weight, expecting the effect to disappear smoothly, but it stays visible or pops as the volume starts influencing the camera.</p>
+<p>Before adding another control, inspect the <strong>default parameter values in the parent material</strong>.</p>
+<p>The important distinction: for ordinary blendable post-process material instances, Unreal blends parameter values. Blend Weight is not a magic link to a parameter named <code>Strength</code>, and it is not necessarily a crossfade between two completely rendered images.</p>
+<h2 id="give-zero-influence-somewhere-neutral-to-go">Give zero influence somewhere neutral to go</h2>
+<p>Epic’s documentation demonstrates a good setup with parent defaults that leave the input image unchanged: multiply by white, or use a Lerp alpha of zero.</p>
+<p>Think of a simple, isolated scalar parameter like this:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="hlsl"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// Simplified model for one instance blending from its neutral parent.</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> value = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">lerp</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(ParentDefault, InstanceValue, Weight);</span></span></code></pre>
+<p>If the parent default and the instance value are both <code>1</code>, blending between them still gives <code>1</code>. There is no gradual reduction of that parameter as the weight approaches zero.</p>
+<p>At zero influence the pass may not be rendered at all. If its parameter is already non-neutral as soon as it starts contributing, that can produce a visible pop.</p>
+<table>
+<thead>
+<tr>
+<th>Weight</th>
+<th>Parent <code>0</code>, instance <code>1</code></th>
+<th>Parent <code>1</code>, instance <code>1</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.00</code></td>
+<td><code>0.00</code></td>
+<td><code>1.00</code></td>
+</tr>
+<tr>
+<td><code>0.25</code></td>
+<td><code>0.25</code></td>
+<td><code>1.00</code></td>
+</tr>
+<tr>
+<td><code>0.50</code></td>
+<td><code>0.50</code></td>
+<td><code>1.00</code></td>
+</tr>
+<tr>
+<td><code>1.00</code></td>
+<td><code>1.00</code></td>
+<td><code>1.00</code></td>
+</tr>
+</tbody>
+</table>
+<p>These are <strong>parameter values in the simplified model</strong>, not a prediction that the pass renders at weight zero or that perceived brightness changes linearly.</p>
+<h2 id="make-a-minimal-test-material">Make a minimal test material</h2>
+<p>Use a deliberately simple tint effect to isolate the behavior.</p>
+<ol>
+<li>Create a material with the <strong>Post Process</strong> material domain.</li>
+<li>Read the incoming color with <strong>SceneTexture</strong>, set to <strong>PostProcessInput0</strong>.</li>
+<li>Add a vector parameter named <code>Tint</code>, with a parent default of white.</li>
+<li>Add a scalar parameter named <code>Amount</code>, with a parent default of <code>0</code>.</li>
+<li>Multiply the incoming color by <code>Tint</code>.</li>
+<li>Lerp between the untouched input and the tinted input using <code>Amount</code>.</li>
+<li>Connect the result to <strong>Emissive Color</strong>.</li>
+</ol>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>PostProcessInput0 ──────────────────────── Lerp A</span></span>
+<span class="line"><span>PostProcessInput0 ── Multiply(Tint) ─────── Lerp B</span></span>
+<span class="line"><span>Amount ────────────────────────────────── Lerp Alpha</span></span>
+<span class="line"><span>                                         │</span></span>
+<span class="line"><span>                                         └── Emissive Color</span></span></code></pre>
+<p>The math represented by that graph is:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="hlsl"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// Conceptual expression, not a complete post-process shader.</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float3</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> tinted = inputColor * Tint;</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float3</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> outputColor = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">lerp</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(inputColor, tinted, Amount);</span></span></code></pre>
+<p>With <code>Amount = 0</code>, this returns the incoming color unchanged. The parent material therefore describes a neutral starting point.</p>
+<p>Use a normal blendable configuration for this test, not a material that writes to a User Scene Texture. Keep the blendable location unchanged while comparing results.</p>
+<h2 id="set-up-the-instance-and-volume">Set up the instance and volume</h2>
+<p>Create a material instance from that parent. Override:</p>
+<ul>
+<li><code>Amount</code> to <code>1</code>.</li>
+<li><code>Tint</code> to an obvious test color.</li>
+</ul>
+<p>Assign the instance to a single Post Process Volume. Make the volume <strong>Unbound</strong> for the initial experiment so camera position and blend radius do not complicate the test.</p>
+<p>Keep the material entry’s weight at <code>1</code>, then vary the <strong>volume’s Blend Weight</strong> from <code>0</code> to <code>1</code>. Disable other volumes and camera overrides while checking this isolated case.</p>
+<p>Now make a deliberately bad variant: set the parent <code>Amount</code> to <code>1</code> and give its parent <code>Tint</code> the same non-white value as the instance. Compare the fade again.</p>
+<p>This is a controlled way to inspect the neutral-default problem. After that works, test a bounded volume and walk the camera through its blend radius.</p>
+<h2 id="neutral-depends-on-the-operation">Neutral depends on the operation</h2>
+<p>Zero is not the correct default for every parameter.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Usually neutral</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multiply the input color</td>
+<td>White / <code>1</code></td>
+</tr>
+<tr>
+<td>Add a color offset</td>
+<td>Black / <code>0</code></td>
+</tr>
+<tr>
+<td>Lerp from original to modified input</td>
+<td>Alpha <code>0</code></td>
+</tr>
+<tr>
+<td>Add a UV offset</td>
+<td>Offset <code>(0, 0)</code></td>
+</tr>
+<tr>
+<td>Apply distortion</td>
+<td>Distortion strength <code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Check the complete graph. For example, setting a distortion strength to zero is only neutral if no other operation still changes the image.</p>
+<p>For complicated effects, a final Lerp from the untouched input is often a useful place to define a clear zero-effect state. It does not automatically make the modified branch free to compute.</p>
+<h2 id="more-than-one-parameter-is-blending">More than one parameter is blending</h2>
+<p>The volume does not search for <code>Amount</code> or <code>Strength</code> by name. Those are just parameter names chosen for readability.</p>
+<p>Other blendable scalar and vector parameters can change as well. In the tint example, both <code>Amount</code> and <code>Tint</code> interpolate, so the visible result need not look like a linear fade between the two endpoint images.</p>
+<p>Epic also calls out a subtle difference from the built-in post-process settings: <strong>an unchecked material-instance parameter override does not remove that parameter from material blending</strong>. Its inherited value still participates.</p>
+<p>Static switches are a different mechanism; this is not a recipe for interpolating compiled shader permutations.</p>
+<h2 id="know-which-weight-and-priority-you-are-changing">Know which weight and priority you are changing</h2>
+<p>Several controls affect the final result:</p>
+<ul>
+<li><strong>Volume Blend Weight:</strong> the contribution of that volume’s settings.</li>
+<li><strong>Blend Radius:</strong> the spatial transition around a bounded volume.</li>
+<li><strong>The material entry’s weight:</strong> the weight assigned to that blendable entry.</li>
+<li><strong>Volume Priority:</strong> ordering when volume contributions overlap.</li>
+<li><strong>Material Blendable Priority:</strong> rendering order between different blendable materials.</li>
+</ul>
+<p>The one-parameter equation above is a mental model for the isolated test, not the full algorithm for every combination of overlapping volumes and materials.</p>
+<p>For compatible instances of the same blendable material, Unreal can blend their settings into a shared material pass. That does not mean unrelated effects merge into one pass. Epic documents exceptions too: disabling <strong>Is Blendable</strong> makes instances render independently, and materials writing to User Scene Textures are not blended.</p>
+<h2 id="before-you-add-another-workaround">Before you add another workaround</h2>
+<p>Check the following in order:</p>
+<ol>
+<li>Does the parent material leave the input unchanged?</li>
+<li>Is the volume using the intended material <strong>instance</strong>?</li>
+<li>Are you changing the volume weight or the material entry weight?</li>
+<li>Are another volume, camera setting, or priority affecting the result?</li>
+<li>Are unoverridden parameters inheriting non-neutral values?</li>
+<li>Does the setup still blend as expected at the chosen location and in the target engine version?</li>
+</ol>
+<p><strong>Validation status:</strong> the neutral-default explanation was checked against Epic’s documentation, and the table has arithmetic tests. The demonstration material and volume setup still need an in-engine capture and a recorded test version.</p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/post-process-materials-in-unreal-engine#blending-between-different-material-instances">Epic’s Post Process Materials documentation</a> covers neutral defaults, inherited parameters, priorities, and blending exceptions. The diagrams in this article are conceptual, not captured engine output.</p>
+</article></div></div><section class="related-notes" aria-labelledby="related-title"><div class="section-heading"><h2 id="related-title">Keep exploring</h2><a class="text-link" href="/">All articles →</a></div><div class="related-grid"><a href="/notes/animate-material-without-blueprint-tick/"><span class="eyebrow">Techniques</span><h3>Animate a material without Blueprint Tick <span aria-hidden="true">↗</span></h3></a></div></section></main><footer class="site-footer" id="contact"><div class="footer-name"><span class="status-dot" aria-hidden="true"></span> A small corner of the internet.</div><div class="footer-links"><a href="/rss.xml" aria-label="Subscribe to the RSS feed">RSS ↗</a><a href="https://github.com/inverselerp">GitHub ↗</a><a href="mailto:philippepatient.techart@gmail.com">Email me ↗</a><span>© 2026 Philippe Patient</span></div></footer></div></body></html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en" data-theme="system" data-theme-preference="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Send a start time once. Let the material handle the progression of a reveal, fade, or glow."><meta name="theme-color" content="#dedddb"><meta name="color-scheme" content="light dark"><script data-theme-script>// Inlined once in <head>; only a local appearance preference is stored.
+(() => {
+  const key = 'inverselerp-theme';
+  const root = document.documentElement;
+  const system = window.matchMedia('(prefers-color-scheme: dark)');
+  let button;
+  // Missing, invalid, or legacy "system" values mean no manual override.
+  const normalize = (value) => value === 'light' || value === 'dark' ? value : 'system';
+  const read = () => {
+    try { return normalize(window.localStorage.getItem(key)); }
+    catch { return 'system'; }
+  };
+  let mode = read();
+  const resolve = () => mode === 'system' ? (system.matches ? 'dark' : 'light') : mode;
+
+  function apply() {
+    const resolved = resolve();
+    root.dataset.theme = resolved;
+    root.dataset.themePreference = mode;
+    root.style.colorScheme = resolved;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',
+      resolved === 'dark' ? '#25282d' : '#dedddb');
+    if (button) {
+      const current = resolved[0].toUpperCase() + resolved.slice(1);
+      const next = resolved === 'dark' ? 'light' : 'dark';
+      const label = `Theme: ${current}. Switch to ${next} theme.`;
+      button.setAttribute('aria-label', label);
+      button.title = label;
+    }
+  }
+
+  // Resolve the OS default or saved override before CSS/body rendering.
+  apply();
+  function bind() {
+    button = document.getElementById('theme-toggle');
+    if (!button) return;
+    button.addEventListener('click', () => {
+      mode = resolve() === 'dark' ? 'light' : 'dark';
+      try { window.localStorage.setItem(key, mode); } catch { /* Storage can be blocked. */ }
+      apply();
+    });
+    apply();
+    button.hidden = false;
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, { once: true });
+  else bind();
+
+  const followSystem = () => { if (mode === 'system') apply(); };
+  if (system.addEventListener) system.addEventListener('change', followSystem);
+  window.addEventListener('storage', (event) => {
+    if (event.key === key || event.key === null) {
+      mode = normalize(event.newValue);
+      apply();
+    }
+  });
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      mode = read();
+      apply();
+    }
+  });
+})();
+</script><meta name="robots" content="index,follow"><meta property="og:title" content="Animate a material without Blueprint Tick — Philippe Patient"><meta property="og:description" content="Send a start time once. Let the material handle the progression of a reveal, fade, or glow."><meta property="og:type" content="website"><link rel="canonical" href="https://inverselerp.github.io/notes/animate-material-without-blueprint-tick/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate" type="application/rss+xml" title="Philippe Patient — Field notes" href="/rss.xml"><title>Animate a material without Blueprint Tick — Philippe Patient</title><link rel="stylesheet" href="/assets/Base.DV7-DT_C.css"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="site-shell"><header class="site-header"><a class="identity" href="/" aria-label="Philippe Patient, home"><span class="monogram" aria-hidden="true">p<span>p</span><i>.</i></span><span class="identity-name">Philippe Patient<span>FIELD NOTES & SELECTED WORK</span></span></a><div class="header-actions"><nav aria-label="Main navigation"><a href="/">Home<span class="nav-dot" aria-hidden="true"></span></a><a href="/works/" aria-current="page">Works<span class="nav-dot" aria-hidden="true"></span></a><a href="/games/">Games<span class="nav-dot" aria-hidden="true"></span></a><a href="/contact/">Contact<span class="nav-dot" aria-hidden="true"></span></a></nav><button id="theme-toggle" class="theme-toggle" type="button" hidden aria-label="Toggle light or dark theme" title="Toggle light or dark theme"><svg class="theme-icon theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg><svg class="theme-icon theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14a8.7 8.7 0 0 1-10.5-10.5A9 9 0 1 0 20.5 14Z"></path></svg></button></div></header><main id="main"><div class="article-topline"><a class="back-link mono" href="/works/unreal-engine/">← UNREAL ENGINE</a><span class="mono">ARTICLE / 6 MIN READ</span></div><header class="article-header"><div class="post-meta mono"><time datetime="2026-09-09T00:00:00.000Z">Sep 09, 2026</time></div><h1>Animate a material without Blueprint Tick</h1><p class="article-description">Send a start time once. Let the material handle the progression of a reveal, fade, or glow.</p><div class="post-tags"><span>Unreal Engine</span><span>Materials</span><span>Blueprint</span></div></header><figure class="article-cover surface-bevel"><img src="/images/material-timeline.svg" alt="A single Blueprint trigger sets a start time. Below it, a material computes progress from zero to one as time advances." width="960" height="620" fetchpriority="high"><figcaption class="mono">CONCEPT DIAGRAM / ONE TRIGGER, CONTINUOUS MATERIAL EVALUATION</figcaption></figure><div class="article-layout"><aside class="article-sidebar"><nav aria-label="On this page"><p class="eyebrow">IN THIS NOTE</p><ol><li><a href="#the-idea-in-one-line">The idea in one line</a></li><li><a href="#build-the-material">Build the material</a></li><li><a href="#trigger-it-from-blueprint">Trigger it from Blueprint</a></li><li><a href="#match-the-clocks">Match the clocks</a></li><li><a href="#reuse-the-progression">Reuse the progression</a></li><li><a href="#what-this-does-not-replace">What this does not replace</a></li><li><a href="#verify-it-in-a-small-scene">Verify it in a small scene</a></li><li><a href="#reference">Reference</a></li></ol></nav><div class="sidebar-note"><span class="sidebar-glyph" aria-hidden="true">↳</span><p>Read it.<br>Try it.<br>Make it your own.</p></div></aside><div class="article-main"><aside class="editorial-note"><span class="mono">ENGINE CHECK PENDING</span><p>Prepared from working notes with new conceptual diagrams. The described setup has not yet been reproduced or profiled in Unreal Engine.</p></aside><article class="prose"><p>A dissolve or glow often starts with a Blueprint Timeline: update a float, write it into a material instance, repeat until the animation finishes.</p>
+<p>For a simple time-based visual, there is another option. <strong>Tell the material when the effect started, then let it calculate how far along it is.</strong> Blueprint handles the event. The material handles the progression.</p>
+<p>This removes the need for a Blueprint Tick or Timeline to keep writing the animation value. It does <strong>not</strong> make the shader free or stop it evaluating each rendered frame.</p>
+<h2 id="the-idea-in-one-line">The idea in one line</h2>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="hlsl"><code><span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> progress = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">saturate</span><span style="color:#24292E;--shiki-dark:#E1E4E8">((Time - StartTime) / </span><span style="color:#005CC5;--shiki-dark:#79B8FF">max</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(Duration, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">0.001</span><span style="color:#24292E;--shiki-dark:#E1E4E8">));</span></span></code></pre>
+<p>Subtract the start timestamp from the current time to get elapsed time. Divide by the duration to normalize it. Clamp the result to the range <code>[0, 1]</code>.</p>
+<p>For a one-second transition:</p>
+<table>
+<thead>
+<tr>
+<th>Time since trigger</th>
+<th>Progress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.00 seconds</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>0.25 seconds</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>0.50 seconds</td>
+<td>0.50</td>
+</tr>
+<tr>
+<td>1.00 seconds</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>2.00 seconds</td>
+<td>1.00</td>
+</tr>
+</tbody>
+</table>
+<p>Nothing needs to keep pushing those intermediate values from Blueprint.</p>
+<h2 id="build-the-material">Build the material</h2>
+<p>Start with a simple <strong>Surface / Unlit</strong> material on a test mesh. Use a color reveal first; a complicated dissolve can hide problems with the timing.</p>
+<p>Add three scalar parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StartTime</code></td>
+<td><code>0</code></td>
+<td>Timestamp written when the effect is triggered.</td>
+</tr>
+<tr>
+<td><code>Duration</code></td>
+<td><code>1</code></td>
+<td>Transition length in seconds.</td>
+</tr>
+<tr>
+<td><code>Enabled</code></td>
+<td><code>0</code></td>
+<td>Keeps the material in its starting state before the first trigger.</td>
+</tr>
+</tbody>
+</table>
+<p>Then build this chain with ordinary material nodes:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Time ────────── Subtract ── Divide ── Saturate ── Multiply ── Progress</span></span>
+<span class="line"><span>StartTime ──────┘             │                     │</span></span>
+<span class="line"><span>Duration ── Max(0.001) ────────┘                  Enabled</span></span></code></pre>
+<p>Use <code>Progress</code> as the alpha of a Lerp between a dark color and a bright color, and connect the result to <strong>Emissive Color</strong>. Set the Time node’s <strong>Ignore Pause</strong> option off and leave <strong>Period</strong> disabled for this first example.</p>
+<p><code>Enabled</code> is a regular scalar, not a Static Switch. With its default of zero, the output stays at the start of the reveal even if the level has been running for a while.</p>
+<p>The equivalent arithmetic is:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="hlsl"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">// Conceptual HLSL for the node graph, not a complete standalone shader.</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> safeDuration = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">max</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(Duration, </span><span style="color:#005CC5;--shiki-dark:#79B8FF">0.001</span><span style="color:#24292E;--shiki-dark:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> progress = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">saturate</span><span style="color:#24292E;--shiki-dark:#E1E4E8">((Time - StartTime) / safeDuration);</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">progress *= </span><span style="color:#005CC5;--shiki-dark:#79B8FF">saturate</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(Enabled);</span></span>
+<span class="line"><span style="color:#D73A49;--shiki-dark:#F97583">float3</span><span style="color:#24292E;--shiki-dark:#E1E4E8"> color = </span><span style="color:#005CC5;--shiki-dark:#79B8FF">lerp</span><span style="color:#24292E;--shiki-dark:#E1E4E8">(StartColor, EndColor, progress);</span></span></code></pre>
+<h2 id="trigger-it-from-blueprint">Trigger it from Blueprint</h2>
+<p>On setup, use <strong>Create Dynamic Material Instance</strong> on the mesh component and keep the returned reference. Create it once, rather than allocating a new instance each time the effect plays.</p>
+<p>When an event should start the reveal:</p>
+<pre class="astro-code astro-code-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Trigger event</span></span>
+<span class="line"><span>  → Set Scalar Parameter Value: StartTime = Get Game Time in Seconds</span></span>
+<span class="line"><span>  → Set Scalar Parameter Value: Enabled = 1</span></span></code></pre>
+<p>Set <code>Duration</code> during setup, or on the trigger if it needs to vary.</p>
+<p>After that, leave the material alone. The Time node continues advancing and the material derives its own progression. Subsequent triggers can restart the effect by writing a new <code>StartTime</code>.</p>
+<p>Parameter names must match exactly between the material and Blueprint. A naming mismatch can look like a timing problem when the timestamp simply never arrived.</p>
+<h2 id="match-the-clocks">Match the clocks</h2>
+<p><code>Time - StartTime</code> only makes sense if both values use the same clock.</p>
+<p>For the normal gameplay case, start with <strong>Get Game Time in Seconds</strong> in Blueprint and material <strong>Time</strong> with <strong>Ignore Pause disabled</strong>. Verify the pairing in the actual play mode and engine version you intend to use.</p>
+<ul>
+<li>Do not subtract an actor’s age from a world-time clock.</li>
+<li>Do not mix real time with game time if pause or time dilation matters.</li>
+<li>Leave Time’s <strong>Period</strong> off: a wrapping clock minus an unwrapped timestamp eventually produces the wrong elapsed time.</li>
+<li>Per-actor custom time dilation does not automatically give a shared material clock that actor’s timing behavior.</li>
+</ul>
+<p>If the effect must continue through pause, choose a matching real-time setup deliberately and test both sides. Toggling Ignore Pause alone is not enough to establish that the clocks agree.</p>
+<h2 id="reuse-the-progression">Reuse the progression</h2>
+<p>Once <code>Progress</code> is correct, it can drive more than a color:</p>
+<ul>
+<li><strong>Fade in:</strong> use <code>Progress</code>.</li>
+<li><strong>Fade out:</strong> use <code>1 - Progress</code>.</li>
+<li><strong>Ease the transition:</strong> use <code>Progress * Progress * (3 - 2 * Progress)</code>.</li>
+<li><strong>Dissolve:</strong> compare a noise mask against a threshold driven by <code>Progress</code>.</li>
+<li><strong>Glow pulse:</strong> shape the value so it rises and falls during the interval.</li>
+</ul>
+<p>Rewriting the start timestamp restarts the curve at zero. If it was already halfway through, that restart can snap. A continuous retargetable tween needs additional state, such as the starting value; this simple recipe does not provide that automatically.</p>
+<h2 id="what-this-does-not-replace">What this does not replace</h2>
+<p>Use this pattern when the material only needs to answer, “What should this look like at this time?”</p>
+<p>It does not emit a Blueprint completion event, update collision, or manage gameplay state. If gameplay needs to know when the effect ends, use an appropriate timer or other gameplay logic with compatible timing.</p>
+<p>The material still has rendering cost. Dynamic material instances also have CPU, memory, and batching implications. Removing repeated Blueprint parameter writes is the specific change here—not a promise that every effect will become faster.</p>
+<h2 id="verify-it-in-a-small-scene">Verify it in a small scene</h2>
+<p>Before turning this into a reusable function:</p>
+<ol>
+<li>Wait several seconds after Begin Play, then trigger. The reveal should still start at zero.</li>
+<li>Test durations of <code>0.25</code>, <code>1</code>, and <code>3</code> seconds.</li>
+<li>Trigger twice, including once mid-transition. Confirm the intended restart behavior.</li>
+<li>Pause and resume, then test global time dilation.</li>
+<li>Trigger two actors at different times. Confirm their material instances are independent.</li>
+<li>Check zero and negative duration inputs; this example clamps them to a small positive duration.</li>
+</ol>
+<p><strong>Validation status:</strong> the equations have automated arithmetic checks, but this exact setup has not yet been reproduced or profiled in Unreal. An in-engine capture and a recorded test version are still pending.</p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/constant-material-expressions-in-unreal-engine#time">Epic’s Time material-expression documentation</a> describes the Ignore Pause and Period options. The diagrams here are newly drawn conceptual illustrations, not production graph captures.</p>
+</article></div></div><section class="related-notes" aria-labelledby="related-title"><div class="section-heading"><h2 id="related-title">Keep exploring</h2><a class="text-link" href="/">All articles →</a></div><div class="related-grid"><a href="/notes/post-process-blend-weight/"><span class="eyebrow">Techniques</span><h3>Why post-process Blend Weight can surprise you <span aria-hidden="true">↗</span></h3></a></div></section></main><footer class="site-footer" id="contact"><div class="footer-name"><span class="status-dot" aria-hidden="true"></span> A small corner of the internet.</div><div class="footer-links"><a href="/rss.xml" aria-label="Subscribe to the RSS feed">RSS ↗</a><a href="https://github.com/inverselerp">GitHub ↗</a><a href="mailto:philippepatient.techart@gmail.com">Email me ↗</a><span>© 2026 Philippe Patient</span></div></footer></div></body></html>
