@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620">
+  <title>One trigger, continuous material evaluation</title>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#607a57" stroke-opacity=".13"/></pattern>
+    <linearGradient id="ramp" x1="0" x2="1"><stop stop-color="#284536"/><stop offset="1" stop-color="#d5ee9c"/></linearGradient>
+  </defs>
+  <path fill="#15251e" d="M0 0h960v620H0z"/><path fill="url(#grid)" d="M0 0h960v620H0z"/>
+  <g font-family="Consolas,monospace" fill="#abc2a0" font-size="14" letter-spacing="1.4">
+    <text x="48" y="48">MATERIAL STUDY / 01</text><text x="735" y="48">TIME → PROGRESS</text>
+    <text x="62" y="128" fill="#d5ee9c">BLUEPRINT</text><text x="62" y="153" font-size="12">WRITE ON TRIGGER</text>
+  </g>
+  <path d="M260 135H875" fill="none" stroke="#476247" stroke-width="2"/>
+  <path d="M310 109v52" stroke="#d5ee9c" stroke-width="2"/>
+  <circle cx="310" cy="135" r="9" fill="#d5ee9c"/>
+  <text x="345" y="125" fill="#dce9cf" font-family="Consolas,monospace" font-size="19">StartTime = now</text>
+  <path d="M310 172V234" stroke="#a0b887" stroke-dasharray="3 6"/>
+  <g font-family="Consolas,monospace" fill="#abc2a0" font-size="14" letter-spacing="1.4">
+    <text x="62" y="270" fill="#d5ee9c">MATERIAL</text><text x="62" y="295" font-size="12">EVALUATE EACH FRAME</text>
+  </g>
+  <rect x="275" y="239" width="595" height="92" fill="#203321" stroke="#69835b"/>
+  <text x="306" y="275" fill="#d5ee9c" font-family="Consolas,monospace" font-size="21">saturate((Time − StartTime) / Duration)</text>
+  <text x="306" y="306" fill="#a5bc9b" font-family="Consolas,monospace" font-size="13">Use a safe positive duration and matching clocks.</text>
+  <path d="M75 501H877M112 503V377" fill="none" stroke="#6b8260"/>
+  <text x="75" y="364" fill="#abc2a0" font-family="Consolas,monospace" font-size="13">PROGRESS / 0 → 1</text>
+  <path d="M112 501 112 481 284 455 456 429 628 403 802 377V501Z" fill="url(#ramp)" opacity=".24"/>
+  <path d="M112 481 284 455 456 429 628 403 802 377H868" fill="none" stroke="#d5ee9c" stroke-width="3"/>
+  <g fill="#d5ee9c"><circle cx="112" cy="481" r="5"/><circle cx="284" cy="455" r="5"/><circle cx="456" cy="429" r="5"/><circle cx="628" cy="403" r="5"/><circle cx="802" cy="377" r="5"/></g>
+  <g fill="#abc2a0" font-family="Consolas,monospace" font-size="14" text-anchor="middle">
+    <text x="112" y="532">t = 0</text><text x="284" y="532">0.25</text><text x="456" y="532">0.50</text><text x="628" y="532">0.75</text><text x="802" y="532">1 second</text>
+  </g>
+  <text x="75" y="575" fill="#8da581" font-family="Consolas,monospace" font-size="12" letter-spacing="1">CONCEPT / CPU WRITES THE START, NOT EVERY INTERMEDIATE VALUE</text>
+</svg>
