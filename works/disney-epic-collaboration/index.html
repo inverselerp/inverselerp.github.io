@@ -1,64 +1,13 @@
-<!DOCTYPE html><html lang="en" data-theme="system" data-theme-preference="system"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Publicly announced games and entertainment universe connected to Fortnite."><meta name="theme-color" content="#dedddb"><meta name="color-scheme" content="light dark"><script data-theme-script>// Inlined once in <head>; only a local appearance preference is stored.
-(() => {
-  const key = 'inverselerp-theme';
-  const root = document.documentElement;
-  const system = window.matchMedia('(prefers-color-scheme: dark)');
-  let button;
-  // Missing, invalid, or legacy "system" values mean no manual override.
-  const normalize = (value) => value === 'light' || value === 'dark' ? value : 'system';
-  const read = () => {
-    try { return normalize(window.localStorage.getItem(key)); }
-    catch { return 'system'; }
-  };
-  let mode = read();
-  const resolve = () => mode === 'system' ? (system.matches ? 'dark' : 'light') : mode;
-
-  function apply() {
-    const resolved = resolve();
-    root.dataset.theme = resolved;
-    root.dataset.themePreference = mode;
-    root.style.colorScheme = resolved;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',
-      resolved === 'dark' ? '#25282d' : '#dedddb');
-    if (button) {
-      const current = resolved[0].toUpperCase() + resolved.slice(1);
-      const next = resolved === 'dark' ? 'light' : 'dark';
-      const label = `Theme: ${current}. Switch to ${next} theme.`;
-      button.setAttribute('aria-label', label);
-      button.title = label;
-    }
-  }
-
-  // Resolve the OS default or saved override before CSS/body rendering.
-  apply();
-  function bind() {
-    button = document.getElementById('theme-toggle');
-    if (!button) return;
-    button.addEventListener('click', () => {
-      mode = resolve() === 'dark' ? 'light' : 'dark';
-      try { window.localStorage.setItem(key, mode); } catch { /* Storage can be blocked. */ }
-      apply();
-    });
-    apply();
-    button.hidden = false;
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, { once: true });
-  else bind();
-
-  const followSystem = () => { if (mode === 'system') apply(); };
-  if (system.addEventListener) system.addEventListener('change', followSystem);
-  window.addEventListener('storage', (event) => {
-    if (event.key === key || event.key === null) {
-      mode = normalize(event.newValue);
-      apply();
-    }
-  });
-  window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-      mode = read();
-      apply();
-    }
-  });
-})();
-</script><meta name="robots" content="index,follow"><meta property="og:title" content="Disney × Epic Games — Philippe Patient"><meta property="og:description" content="Publicly announced games and entertainment universe connected to Fortnite."><meta property="og:type" content="website"><link rel="canonical" href="https://inverselerp.github.io/works/disney-epic-collaboration/"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate" type="application/rss+xml" title="Philippe Patient — Field notes" href="/rss.xml"><title>Disney × Epic Games — Philippe Patient</title><link rel="stylesheet" href="/assets/Base.BXhULIBq.css"><link rel="stylesheet" href="/assets/_id_.BfMGXLnt.css"></head><body><a class="skip-link" href="#main">Skip to content</a><div class="site-shell"><header class="site-header"><a class="identity" href="/" aria-label="Philippe Patient, home"><span class="monogram" aria-hidden="true">p<span>p</span><i>.</i></span><span class="identity-name">Philippe Patient<span>FIELD NOTES & SELECTED WORK</span></span></a><div class="header-actions"><nav aria-label="Main navigation"><a href="/">Home<span class="nav-dot" aria-hidden="true"></span></a><a href="/works/" aria-current="page">Works<span class="nav-dot" aria-hidden="true"></span></a><a href="/games/">Games<span class="nav-dot" aria-hidden="true"></span></a><a href="/contact/">Contact<span class="nav-dot" aria-hidden="true"></span></a></nav><div class="header-utilities"><ul class="social-links social-icons" aria-label="Social profiles"><li><a href="https://www.linkedin.com/in/philippepatient/" rel="me" aria-label="Philippe Patient on LinkedIn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.4 7.8a2.2 2.2 0 1 0 0-4.4 2.2 2.2 0 0 0 0 4.4ZM3.5 9.5h3.8V21H3.5V9.5Zm6.2 0h3.6v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.4 4.5 5.4V21h-3.8v-5.7c0-1.4 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V21H9.7V9.5Z"></path></svg></a></li><li><a href="https://x.com/inverselerp_" rel="me" aria-label="Philippe Patient on Twitter / X" title="Twitter / X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 14.6 5.5 22H2.4l8.1-9.3L2.8 2h6.5l4.5 6.7L18.9 2Zm-1.1 18h1.7L8.4 3.9H6.6L17.8 20Z"></path></svg></a></li></ul><button id="theme-toggle" class="theme-toggle" type="button" hidden aria-label="Toggle light or dark theme" title="Toggle light or dark theme"><svg class="theme-icon theme-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg><svg class="theme-icon theme-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14a8.7 8.7 0 0 1-10.5-10.5A9 9 0 1 0 20.5 14Z"></path></svg></button></div></div></header><main id="main"><div class="project-topline" data-astro-cid-rlnpzrfg><a class="back-link mono" href="/works/#experience" data-astro-cid-rlnpzrfg>← ALL PROJECTS</a><span class="mono" data-astro-cid-rlnpzrfg>PROJECT OVERVIEW</span></div><header class="project-hero" data-astro-cid-rlnpzrfg><div class="project-intro" data-astro-cid-rlnpzrfg><p class="eyebrow" data-astro-cid-rlnpzrfg>PUBLIC ANNOUNCEMENT</p><h1 data-astro-cid-rlnpzrfg>Disney × Epic Games</h1><p data-astro-cid-rlnpzrfg>Publicly announced games and entertainment universe connected to Fortnite.</p><div class="project-actions" data-astro-cid-rlnpzrfg><a class="button secondary" href="https://www.epicgames.com/site/news/disney-and-epic-games-to-create-expansive-and-open-games-and-entertainment-universe-connected-to-fortnite" data-astro-cid-rlnpzrfg>Read the announcement <span aria-hidden="true" data-astro-cid-rlnpzrfg>↗</span></a></div></div><figure class="project-hero-art surface-bevel" data-astro-cid-rlnpzrfg><img src="/images/disney-fortnite.webp" alt="Disney and Epic Games logos over the universe shown in the official public collaboration announcement." width="900" height="506" fetchpriority="high" data-astro-cid-rlnpzrfg><figcaption data-astro-cid-rlnpzrfg>Public project imagery · artwork authorship is not implied</figcaption></figure></header><section class="project-overview" aria-label="Project overview" data-astro-cid-rlnpzrfg><article class="prose" data-astro-cid-rlnpzrfg><p>Only the official public announcement and its promotional artwork are shown here. Project-specific contributions are not detailed.</p>
-</article><aside class="project-facts" data-astro-cid-rlnpzrfg><p class="eyebrow" data-astro-cid-rlnpzrfg>SCOPE</p><dl data-astro-cid-rlnpzrfg><dt data-astro-cid-rlnpzrfg>Public detail</dt><dd data-astro-cid-rlnpzrfg>Project-specific contribution details not shared publicly</dd><dt data-astro-cid-rlnpzrfg>Studio</dt><dd data-astro-cid-rlnpzrfg>Epic Games</dd></dl></aside></section></main><footer class="site-footer" id="contact"><div class="footer-name">© 2026 Philippe Patient</div><div class="footer-links"><a href="/rss.xml" aria-label="Subscribe to the RSS feed">RSS ↗</a><a href="https://github.com/inverselerp">GitHub ↗</a><a href="mailto:philippepatient.techart@gmail.com">Email me ↗</a></div></footer></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirecting to Projects</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://inverselerp.github.io/projects/disney-epic-collaboration/">
+<script>window.location.replace('/projects/disney-epic-collaboration/' + window.location.search + window.location.hash);</script>
+<meta http-equiv="refresh" content="0;url=/projects/disney-epic-collaboration/">
+</head>
+<body><p>This page has moved. <a href="/projects/disney-epic-collaboration/">Continue to Projects</a>.</p></body>
+</html>
